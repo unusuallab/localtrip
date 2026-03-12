@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>양평 용문산 산나물축제 — 버스 예약</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --indigo: #211574;
+            --violet: #56329e;
+            --periwinkle: #7B8FE8;
+            --sky: #A8C4F5;
+            --mist: #EEF2FF;
+            --white: #FFFFFF;
+            --ink: #1A1535;
+            --slate: #5A5580;
+            --border: #D5CCFF;
+            --shadow: rgba(59, 47, 143, .14);
+            --accent: #b397d4;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: var(--mist);
+            color: var(--ink);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ── 배경 장식 ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 15% 0%, rgba(108, 63, 197, .18) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 90% 10%, rgba(123, 143, 232, .22) 0%, transparent 55%),
+                radial-gradient(ellipse 50% 40% at 50% 100%, rgba(176, 107, 255, .12) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── 컨테이너 ── */
+        .page {
+            position: relative;
+            z-index: 1;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 28px 16px 64px;
+        }
+
+        /* ── 헤더 배지 ── */
+        .top-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, var(--violet), var(--periwinkle));
+            color: var(--white);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: .08em;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 14px rgba(108, 63, 197, .35);
+        }
+
+        .top-badge span {
+            opacity: .7;
+        }
+
+        /* ── 카드 공통 ── */
+        .card {
+            background: rgba(255, 255, 255, .82);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(213, 204, 255, .6);
+            border-radius: 20px;
+            padding: 28px 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 24px var(--shadow);
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity .5s ease, transform .5s ease, box-shadow .3s ease;
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 36px rgba(108, 63, 197, .18);
+        }
+
+        /* ── 이미지 카드 ── */
+        .img-card {
+            padding: 0;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .festival-img {
+            width: 100%;
+            aspect-ratio: 16/7;
+            object-fit: cover;
+            display: block;
+            background: linear-gradient(135deg, #3B2F8F 0%, #6C3FC5 40%, #7B8FE8 100%);
+        }
+
+        .img-placeholder {
+            width: 100%;
+            aspect-ratio: 16/7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1b0e74 0%, #6c5697 50%, #A8C4F5 100%);
+            color: rgba(255, 255, 255, .6);
+            font-size: 13px;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .img-placeholder::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle 120px at 20% 80%, rgba(176, 107, 255, .3) 0%, transparent 70%),
+                radial-gradient(circle 80px at 80% 20%, rgba(168, 196, 245, .3) 0%, transparent 70%);
+        }
+
+        .img-placeholder-icon {
+            font-size: 42px;
+            position: relative;
+        }
+
+        .img-placeholder-text {
+            position: relative;
+            letter-spacing: .05em;
+        }
+
+        .img-info {
+            padding: 22px 24px 24px;
+        }
+
+        .festival-name {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--indigo);
+            margin-bottom: 14px;
+            line-height: 1.35;
+        }
+
+        .festival-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .meta-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            color: var(--slate);
+        }
+
+        .meta-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .meta-row strong {
+            color: var(--indigo);
+            font-weight: 600;
+        }
+
+        .route-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        .route-stop {
+            background: var(--mist);
+            border: 1px solid var(--border);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--violet);
+        }
+
+        .route-arr {
+            color: var(--periwinkle);
+            font-size: 12px;
+        }
+
+        /* ── 섹션 제목 ── */
+        .section-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #2e2a4d;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, var(--border), transparent);
+        }
+
+        .required-badge {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--white);
+            background: linear-gradient(135deg, var(--violet), var(--accent));
+            padding: 2px 7px;
+            border-radius: 10px;
+            letter-spacing: .04em;
+        }
+
+        .optional-badge {
+            font-size: 10px;
+            font-weight: 500;
+            color: var(--slate);
+            background: var(--mist);
+            border: 1px solid var(--border);
+            padding: 2px 7px;
+            border-radius: 10px;
+        }
+
+        /* ── 라디오 그룹 ── */
+        .radio-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .radio-item {
+            display: none;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 22px;
+            border-radius: 12px;
+            border: 1.5px solid var(--border);
+            background: var(--white);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--slate);
+            cursor: pointer;
+            transition: all .2s ease;
+            user-select: none;
+            min-width: 80px;
+        }
+
+        .radio-label:hover {
+            border-color: var(--violet);
+            color: var(--violet);
+            background: rgba(108, 63, 197, .05);
+        }
+
+        .radio-item:checked+.radio-label {
+            border-color: var(--violet);
+            background: linear-gradient(135deg, var(--violet), var(--periwinkle));
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(108, 63, 197, .3);
+            transform: translateY(-1px);
+        }
+
+        .count-group .radio-label {
+            min-width: 66px;
+        }
+
+        /* ── 금액 표시 ── */
+        .price-box {
+            display: none;
+            margin-top: 16px;
+            background: linear-gradient(135deg, rgba(59, 47, 143, .06), rgba(123, 143, 232, .08));
+            border: 1.5px solid var(--border);
+            border-radius: 14px;
+            padding: 18px 20px;
+            animation: fadeSlide .35s ease forwards;
+        }
+
+        .price-box.show {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .price-line {
+            font-size: 13px;
+            color: var(--slate);
+            margin-bottom: 6px;
+        }
+
+        .price-amount {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--violet);
+            letter-spacing: -.02em;
+        }
+
+        .price-amount sub {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--slate);
+            vertical-align: baseline;
+            margin-left: 3px;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 14px 0;
+        }
+
+        .account-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: .06em;
+            color: var(--slate);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .account-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 14px;
+        }
+
+        .account-details {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .account-bank {
+            font-size: 12px;
+            color: var(--slate);
+            font-weight: 500;
+        }
+
+        .account-number {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--indigo);
+            letter-spacing: .04em;
+        }
+
+        .account-name {
+            font-size: 12px;
+            color: var(--slate);
+        }
+
+        .copy-btn {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 14px;
+            border: none;
+            background: linear-gradient(135deg, var(--violet), var(--periwinkle));
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all .2s ease;
+            white-space: nowrap;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(108, 63, 197, .35);
+        }
+
+        .copy-btn.copied {
+            background: linear-gradient(135deg, #2E9E6B, #4BC98A);
+        }
+
+        /* ── 인풋 ── */
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        .input-wrap label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--slate);
+            margin-bottom: 6px;
+            letter-spacing: .04em;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+            font-size: 14px;
+            font-family: 'Noto Sans KR', sans-serif;
+            color: var(--ink);
+            background: var(--white);
+            outline: none;
+            transition: all .2s ease;
+            -webkit-appearance: none;
+        }
+
+        .input-field::placeholder {
+            color: #C4BFD9;
+        }
+
+        .input-field:focus {
+            border-color: var(--violet);
+            box-shadow: 0 0 0 4px rgba(108, 63, 197, .12);
+        }
+
+        .input-field.error {
+            border-color: #F06595;
+            box-shadow: 0 0 0 4px rgba(240, 101, 149, .1);
+        }
+
+        textarea.input-field {
+            resize: vertical;
+            min-height: 100px;
+            max-height: 200px;
+            line-height: 1.6;
+        }
+
+        .char-count {
+            text-align: right;
+            font-size: 11px;
+            color: var(--slate);
+            margin-top: 5px;
+        }
+
+        /* ── 체크박스 ── */
+        .checkbox-wrap {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .checkbox-wrap input[type="checkbox"] {
+            display: none;
+        }
+
+        .custom-check {
+            width: 20px;
+            height: 20px;
+            border: 1.5px solid var(--border);
+            border-radius: 6px;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all .2s ease;
+            margin-top: 1px;
+        }
+
+        .checkbox-wrap input:checked~.custom-check {
+            background: linear-gradient(135deg, var(--violet), var(--periwinkle));
+            border-color: transparent;
+        }
+
+        .custom-check svg {
+            opacity: 0;
+            transition: opacity .2s;
+        }
+
+        .checkbox-wrap input:checked~.custom-check svg {
+            opacity: 1;
+        }
+
+        .check-text {
+            font-size: 13px;
+            color: var(--slate);
+            line-height: 1.55;
+        }
+
+        .check-text strong {
+            color: var(--violet);
+            font-weight: 600;
+        }
+
+        /* ── 에러 메시지 ── */
+        .error-msg {
+            font-size: 11px;
+            color: #E05C85;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-msg.show {
+            display: block;
+        }
+
+        /* ── 제출 버튼 ── */
+        .submit-wrap {
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        .submit-btn {
+            width: 65%;
+            padding: 17px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(135deg, var(--indigo) 0%, var(--violet) 50%, var(--periwinkle) 100%);
+            color: var(--white);
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Noto Sans KR', sans-serif;
+            letter-spacing: .06em;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 28px rgba(59, 47, 143, .35);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, .15), transparent);
+            opacity: 0;
+            transition: opacity .2s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 36px rgba(59, 47, 143, .42);
+        }
+
+        .submit-btn:hover::before {
+            opacity: 1;
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* ── 성공 모달 ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(20, 15, 50, .65);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s ease;
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-box {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 36px 28px;
+            max-width: 360px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 24px 64px rgba(59, 47, 143, .3);
+            transform: scale(.9) translateY(20px);
+            transition: transform .35s cubic-bezier(.34, 1.56, .64, 1);
+        }
+
+        .modal-overlay.show .modal-box {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-icon {
+            width: 68px;
+            height: 68px;
+            margin: 0 auto 16px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--violet), var(--periwinkle));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 8px 24px rgba(108, 63, 197, .35);
+        }
+
+        .modal-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--indigo);
+            margin-bottom: 8px;
+        }
+
+        .modal-desc {
+            font-size: 13px;
+            color: var(--slate);
+            line-height: 1.65;
+        }
+
+        .modal-close {
+            margin-top: 22px;
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--violet), var(--periwinkle));
+            color: var(--white);
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Noto Sans KR', sans-serif;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(108, 63, 197, .3);
+        }
+
+        /* ── 반응형 ── */
+        @media (max-width: 480px) {
+            .page {
+                padding: 16px 12px 56px;
+            }
+
+            .festival-name {
+                font-size: 25px;
+            }
+
+            .price-amount {
+                font-size: 24px;
+            }
+
+            .radio-group {
+                gap: 8px;
+            }
+
+            .radio-label {
+                padding: 9px 16px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+
+        <!-- 배지 -->
+        <div class="top-badge">🚌 <span>축제버스</span> 예약 신청</div>
+
+        <!-- 축제 정보 카드 -->
+        <div class="card img-card">
+            <div class="img-placeholder">
+                <div class="img-placeholder-icon">🌿</div>
+                <div class="img-placeholder-text">축제 이미지</div>
+            </div>
+            <div class="img-info">
+                <div class="festival-name">양평 용문산 산나물축제</div>
+                <div class="festival-meta">
+                    <div class="meta-row">
+                        <div class="meta-icon">📅</div>
+                        <div><strong>2026.04.25</strong> (토)</div>
+                    </div>
+                    <div class="meta-row">
+                        <div class="meta-icon">💰</div>
+                        <div><strong>₩20,000</strong> / 1인 왕복</div>
+                    </div>
+                    <div class="meta-row">
+                        <div class="meta-icon">📍</div>
+                        <div class="route-arrow">
+                            <span class="route-stop">사당역</span>
+                            <span class="route-arr">→</span>
+                            <span class="route-stop">잠실역</span>
+                            <span class="route-arr">→</span>
+                            <span class="route-stop">축제장</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 탑승 지역 -->
+        <div class="card">
+            <div class="section-title">
+                🚏 탑승 지역
+                <!-- <span class="required-badge">필수</span> -->
+            </div>
+            <div class="radio-group" id="boardGroup">
+                <input type="radio" name="board" id="b1" value="사당역" class="radio-item">
+                <label for="b1" class="radio-label">사당역</label>
+                <input type="radio" name="board" id="b2" value="잠실역" class="radio-item">
+                <label for="b2" class="radio-label">잠실역</label>
+            </div>
+            <div class="error-msg" id="boardErr">탑승 지역을 선택해주세요.</div>
+        </div>
+
+        <!-- 인원 선택 -->
+        <div class="card">
+            <div class="section-title">
+                👥 인원 선택
+                <!-- <span class="required-badge">필수</span> -->
+            </div>
+            <div class="radio-group count-group" id="countGroup">
+                <input type="radio" name="count" id="c1" value="1" class="radio-item">
+                <label for="c1" class="radio-label">1인</label>
+                <input type="radio" name="count" id="c2" value="2" class="radio-item">
+                <label for="c2" class="radio-label">2인</label>
+                <input type="radio" name="count" id="c3" value="3" class="radio-item">
+                <label for="c3" class="radio-label">3인</label>
+                <input type="radio" name="count" id="c4" value="4" class="radio-item">
+                <label for="c4" class="radio-label">4인</label>
+            </div>
+            <div class="error-msg" id="countErr">인원을 선택해주세요.</div>
+
+            <!-- 금액 박스 -->
+            <div class="price-box" id="priceBox">
+                <div class="price-line" id="priceLine">1인 × 20,000원</div>
+                <div class="price-amount" id="priceAmt">₩20,000 <sub>총 결제금액</sub></div>
+                <div class="divider"></div>
+                <div class="account-label">계좌이체 안내</div>
+                <div class="account-info">
+                    <div class="account-details">
+                        <div class="account-bank">카카오뱅크</div>
+                        <div class="account-number" id="accountNum">3333-00-1234567</div>
+                        <div class="account-name">예금주 : 홍길동</div>
+                    </div>
+                    <button class="copy-btn" id="copyBtn" onclick="copyAccount()">
+                        📋 복사
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 신청자 정보 -->
+        <div class="card">
+            <div class="section-title">
+                📝 신청자 정보
+                <!-- <span class="required-badge">필수</span> -->
+            </div>
+            <div class="input-group">
+                <div class="input-wrap">
+                    <label for="nameField">이름</label>
+                    <input type="text" id="nameField" class="input-field" placeholder="홍길동">
+                    <div class="error-msg" id="nameErr">이름을 입력해주세요.</div>
+                </div>
+                <div class="input-wrap">
+                    <label for="phoneField">휴대폰 번호</label>
+                    <input type="tel" id="phoneField" class="input-field" placeholder="01012345678" maxlength="11"
+                        inputmode="numeric">
+                    <div class="error-msg" id="phoneErr">올바른 휴대폰 번호를 입력해주세요.</div>
+                </div>
+                <div class="input-wrap">
+                    <label for="emailField">이메일 주소</label>
+                    <input type="email" id="emailField" class="input-field" placeholder="example@email.com">
+                    <div class="error-msg" id="emailErr">올바른 이메일 주소를 입력해주세요.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 메일링 동의 -->
+        <div class="card">
+            <div class="section-title">
+                💌 메일링 서비스
+                <!-- <span class="optional-badge">선택</span> -->
+            </div>
+            <label class="checkbox-wrap">
+                <input type="checkbox" id="mailingCheck">
+                <div class="custom-check">
+                    <svg width="11" height="9" viewBox="0 0 11 9" fill="none">
+                        <path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="check-text">
+                    <strong>이벤트·할인 소식</strong>을 이메일로 받아보겠습니다.<br>
+                    언제든지 수신 거부할 수 있습니다.
+                </div>
+            </label>
+        </div>
+
+        <!-- 추가 메모 -->
+        <div class="card">
+            <div class="section-title">
+                💬 추가 메모
+                <!-- <span class="optional-badge">선택</span> -->
+            </div>
+            <div class="input-wrap">
+                <textarea id="memoField" class="input-field" placeholder="탑승 관련 문의나 전달 사항을 자유롭게 입력해주세요."
+                    maxlength="200"></textarea>
+                <div class="char-count"><span id="charCount">0</span> / 200</div>
+            </div>
+        </div>
+
+        <!-- 신청 버튼 -->
+        <div class="submit-wrap card" style="background: transparent; border: none; box-shadow: none; padding: 0;">
+            <button class="submit-btn" onclick="submitForm()">신청하기 →</button>
+        </div>
+
+    </div>
+
+    <!-- 성공 모달 -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-box">
+            <div class="modal-icon">✅</div>
+            <div class="modal-title">예약 신청 완료!</div>
+            <div class="modal-desc">
+                <strong id="modalName"></strong>님의 신청이 접수되었습니다.<br><br>
+                입금 확인 후 최종 확정 안내를 보내드립니다.<br>
+                계좌이체를 완료해주세요 🙏
+            </div>
+            <button class="modal-close" onclick="closeModal()">확인</button>
+        </div>
+    </div>
+
+    <script>
+        /* ── 카드 등장 애니메이션 ── */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.card').forEach(c => observer.observe(c));
+
+        /* ── 인원 선택 → 금액 계산 ── */
+        const priceBox = document.getElementById('priceBox');
+        const priceLine = document.getElementById('priceLine');
+        const priceAmt = document.getElementById('priceAmt');
+        const UNIT = 20000;
+
+        document.querySelectorAll('input[name="count"]').forEach(r => {
+            r.addEventListener('change', () => {
+                const n = parseInt(r.value);
+                priceBox.classList.remove('show');
+                void priceBox.offsetWidth; // reflow for re-animation
+                priceBox.classList.add('show');
+                priceLine.textContent = `${n}인 × ${UNIT.toLocaleString()}원`;
+                priceAmt.innerHTML = `₩${(n * UNIT).toLocaleString()} <sub>총 결제금액</sub>`;
+                document.getElementById('countErr').classList.remove('show');
+            });
+        });
+
+        /* ── 계좌번호 복사 ── */
+        function copyAccount() {
+            const num = document.getElementById('accountNum').textContent.replace(/-/g, '');
+            const btn = document.getElementById('copyBtn');
+            navigator.clipboard.writeText(num).then(() => {
+                btn.textContent = '✅ 복사됨';
+                btn.classList.add('copied');
+                setTimeout(() => { btn.textContent = '📋 복사'; btn.classList.remove('copied'); }, 2000);
+            }).catch(() => {
+                // fallback
+                const t = document.createElement('textarea');
+                t.value = num; document.body.appendChild(t); t.select();
+                document.execCommand('copy'); document.body.removeChild(t);
+                btn.textContent = '✅ 복사됨'; btn.classList.add('copied');
+                setTimeout(() => { btn.textContent = '📋 복사'; btn.classList.remove('copied'); }, 2000);
+            });
+        }
+
+        /* ── 전화번호: 숫자만 ── */
+        document.getElementById('phoneField').addEventListener('input', function () {
+            this.value = this.value.replace(/\D/g, '');
+        });
+
+        /* ── 글자수 카운트 ── */
+        document.getElementById('memoField').addEventListener('input', function () {
+            document.getElementById('charCount').textContent = this.value.length;
+        });
+
+        /* ── 유효성 검사 ── */
+        function showErr(id, show) {
+            const el = document.getElementById(id);
+            el.classList.toggle('show', show);
+            return show;
+        }
+
+        function validateField(inputId, errId, checkFn) {
+            const el = document.getElementById(inputId);
+            const invalid = !checkFn(el.value.trim());
+            el.classList.toggle('error', invalid);
+            return showErr(errId, invalid);
+        }
+
+        /* ── 실시간 에러 해제 ── */
+        ['nameField', 'phoneField', 'emailField'].forEach(id => {
+            document.getElementById(id).addEventListener('input', function () {
+                this.classList.remove('error');
+                const errMap = { nameField: 'nameErr', phoneField: 'phoneErr', emailField: 'emailErr' };
+                document.getElementById(errMap[id]).classList.remove('show');
+            });
+        });
+        document.querySelectorAll('input[name="board"]').forEach(r =>
+            r.addEventListener('change', () => document.getElementById('boardErr').classList.remove('show'))
+        );
+
+        /* ── 폼 제출 ── */
+        function submitForm() {
+            let hasErr = false;
+
+            // 탑승 지역
+            const board = document.querySelector('input[name="board"]:checked');
+            if (!board) { showErr('boardErr', true); hasErr = true; }
+
+            // 인원
+            const count = document.querySelector('input[name="count"]:checked');
+            if (!count) { showErr('countErr', true); hasErr = true; }
+
+            // 이름
+            if (validateField('nameField', 'nameErr', v => v.length >= 2)) hasErr = true;
+
+            // 전화번호
+            if (validateField('phoneField', 'phoneErr', v => /^01[0-9]{8,9}$/.test(v))) hasErr = true;
+
+            // 이메일
+            if (validateField('emailField', 'emailErr', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v))) hasErr = true;
+
+            if (hasErr) {
+                // 첫 에러 요소로 스크롤
+                const firstErr = document.querySelector('.error, .error-msg.show');
+                if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            // 데이터 수집
+            const data = {
+                board: board.value,
+                count: count.value,
+                amount: parseInt(count.value) * UNIT,
+                name: document.getElementById('nameField').value.trim(),
+                phone: document.getElementById('phoneField').value.trim(),
+                email: document.getElementById('emailField').value.trim(),
+                mailing: document.getElementById('mailingCheck').checked,
+                memo: document.getElementById('memoField').value.trim(),
+            };
+            console.log('예약 데이터:', data);
+
+            // 모달 표시
+            document.getElementById('modalName').textContent = data.name;
+            document.getElementById('successModal').classList.add('show');
+        }
+
+        function closeModal() {
+            document.getElementById('successModal').classList.remove('show');
+        }
+    </script>
+</body>
+
+</html>
