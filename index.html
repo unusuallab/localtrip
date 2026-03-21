@@ -1,1 +1,499 @@
-hello
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>로컬트립 — 축제버스</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<style>
+
+</style>
+
+</head>
+<body>
+
+<!-- ══════ HEADER ══════ -->
+<header class="header">
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">🚌</div>
+      <div class="logo-text">
+        <span class="logo-main">로컬트립 연구소</span>
+        <span class="logo-sub">LocalTrip Lab · 축제버스</span>
+      </div>
+    </a>
+    <nav class="header-nav">
+      <a href="#this-month" class="nav-link">이달의 축제</a>
+      <a href="#next-month" class="nav-link">다음달 축제</a>
+      <!-- <a href="https://open.kakao.com/o/gLqMQGSh" target="_blank" class="nav-link nav-cta">💬 문의하기</a> -->
+    </nav>
+  </div>
+</header>
+
+<!-- ══════ HERO ══════ -->
+<section class="hero fade-up">
+  <div class="hero-slide">
+    <div class="hero-deco"></div>
+    <img src="/view/image/index/sannamul.jpg" 
+        alt="양평 용문산 산나물 축제"
+        class="hero-img"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+    <!-- 이미지 실패시 폴백 -->
+    <div class="hero-img-placeholder" style="display:none;">🌿🌸🎪</div>
+
+    <div class="hero-badge">
+      <span class="live-dot"></span>
+      버스 예약 진행중
+    </div>
+
+    <div class="hero-content">
+      <!-- <div class="hero-tag">🚌 4월 축제버스 추천</div> -->
+      <div class="hero-title">양평 용문산 산나물 축제</div>
+      <div class="hero-meta">
+        <div class="hero-chip">📅 2026.04.25 (토)</div>
+        <div class="hero-chip">📍 사당역 → 잠실역 → 축제장</div>
+        <div class="hero-chip">💰 20,000원 왕복</div>
+      </div>
+      <a href="/view/reservation01.html" class="hero-btn">지금 예약하기 →</a>
+    </div>
+
+    <!-- <div class="hero-dots">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div> -->
+  </div>
+</section>
+
+<!-- ══════ 이번달 축제 ══════ -->
+<section class="section fade-up" id="this-month">
+  <div class="section-head">
+    <div>
+      <div class="section-label">March 2026</div>
+      <div class="section-title"><span>3월</span> 주목할만한 축제 👀</div>
+    </div>
+    <!-- <a href="#" class="see-all">전체보기 →</a> -->
+  </div>
+
+  <div class="slider-wrap">
+    <div class="slider-track" id="sliderTrack-mar">
+
+      <!-- 카드 1 -->
+      <a href="#" class="festival-card slide-card">
+        <div class="card-img">
+          <img src="/view/image/index/berry.png"
+               alt="논산딸기축제"
+               class="card-img-photo"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="img-bg" style="display:none; background:linear-gradient(135deg,#1A2A80,#7A85C1);">🌿</div>
+          <div class="visitor-badge">🏅 45만+</div>
+          <!-- <div class="bus-badge">🚌 예약가능</div> -->
+        </div>
+        <div class="card-body">
+          <div class="card-name">논산딸기축제</div>
+          <div class="card-info-row">
+            <span class="card-info-icon">📅</span>
+            <span>2026.03.26 ~ 2026.03.29</span>
+          </div>
+          <div class="card-info-row">
+            <span class="card-info-icon">📍</span>
+            <span>충청남도 논산시 관촉동 339-1 논산시민가족공원</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 카드 2 -->
+      <a href="#" class="festival-card slide-card">
+        <div class="card-img">
+            <img src="/view/image/index/jjuggu.png"
+               alt="서천 동백꽃 주꾸미 축제"
+               class="card-img-photo"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="img-bg" style="background:linear-gradient(135deg,#2D5016,#6B9B37);">🌸</div>
+          <div class="visitor-badge">🏅 10만+</div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">서천 동백꽃 주꾸미 축제</div>
+          <div class="card-info-row">
+            <span class="card-info-icon">📅</span>
+            <span>2026.03.21 ~ 2026.04.05</span>
+          </div>
+          <div class="card-info-row">
+            <span class="card-info-icon">📍</span>
+            <span>충청남도 서천군 서인로 58 마량진항</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 카드 3 -->
+      <a href="#" class="festival-card slide-card">
+        <div class="card-img">
+            <img src="/view/image/index/cherry.jpg"
+               alt="진해군항제"
+               class="card-img-photo"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="img-bg" style="background:linear-gradient(135deg,#7C2D8B,#C45FD6);">🎭</div>
+          <div class="visitor-badge">🏅 22만+</div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">진해군항제</div>
+          <div class="card-info-row">
+            <span class="card-info-icon">📅</span>
+            <span>2026.03.27 ~ 2026.04.05</span>
+          </div>
+          <div class="card-info-row">
+            <span class="card-info-icon">📍</span>
+            <span>경상남도 창원시 진해구 통신동 중원로터리 일원</span>
+          </div>
+        </div>
+      </a>
+
+    </div><!-- /slider-track -->
+
+    <button class="slider-btn slider-prev" id="sliderPrev-mar">&#8592;</button>
+    <button class="slider-btn slider-next" id="sliderNext-mar">&#8594;</button>
+    <div class="slider-dots" id="sliderDots-mar"></div>
+  </div>
+
+</section>
+
+<!-- ══════ 다음달 축제 ══════ -->
+<section class="section fade-up" id="this-month">
+  <div class="section-head">
+    <div>
+      <div class="section-label">April 2026</div>
+      <div class="section-title"><span>4월</span> 주목할만한 축제 👀</div>
+    </div>
+    <!-- <a href="#" class="see-all">전체보기 →</a> -->
+  </div>
+
+  <div class="slider-wrap">
+    <div class="slider-track" id="sliderTrack-apr">
+
+      <!-- 카드 1 -->
+      <a href="#" class="festival-card slide-card">
+        <div class="card-img">
+          <img src="/view/image/index/chunhyang.png"
+               alt="춘향제"
+               class="card-img-photo"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="img-bg" style="display:none; background:linear-gradient(135deg,#1A2A80,#7A85C1);">🌿</div>
+          <div class="visitor-badge">🏅 100만+</div>
+          <!-- <div class="bus-badge">🚌 예약가능</div> -->
+        </div>
+        <div class="card-body">
+          <div class="card-name">춘향제</div>
+          <div class="card-info-row">
+            <span class="card-info-icon">📅</span>
+            <span>2026.04.30 ~ 2026.05.06</span>
+          </div>
+          <div class="card-info-row">
+            <span class="card-info-icon">📍</span>
+            <span>전북 남원시 요천로 1447 광한루원 일원</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 카드 2 -->
+      <a href="#" class="festival-card slide-card">
+        <div class="card-img">
+            <img src="/view/image/index/cherry2.png"
+               alt="여의도 봄꽃축제"
+               class="card-img-photo"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="img-bg" style="background:linear-gradient(135deg,#2D5016,#6B9B37);">🌸</div>
+          <div class="visitor-badge">🏅 300만+</div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">여의도 봄꽃축제</div>
+          <div class="card-info-row">
+            <span class="card-info-icon">📅</span>
+            <span>2026.04.08 ~ 2026.04.12</span>
+          </div>
+          <div class="card-info-row">
+            <span class="card-info-icon">📍</span>
+            <span>서울 영등포구 여의서로 국회 뒤편</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 카드 3 -->
+      <a href="#" class="festival-card slide-card">
+        <div class="card-img">
+            <img src="/view/image/index/sunshin.png"
+               alt="아산 성웅 이순신축제"
+               class="card-img-photo"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="img-bg" style="background:linear-gradient(135deg,#7C2D8B,#C45FD6);">🎭</div>
+          <div class="visitor-badge">🏅 40만+</div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">아산 성웅 이순신축제</div>
+          <div class="card-info-row">
+            <span class="card-info-icon">📅</span>
+            <span>2026.04.28 ~ 2026.05.03</span>
+          </div>
+          <div class="card-info-row">
+            <span class="card-info-icon">📍</span>
+            <span>충청남도 아산시 온천대로 1496 온양온천역</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 카드 4 -->
+      <a href="#" class="festival-card slide-card">
+        <div class="card-img">
+            <img src="/view/image/index/butterfly.png"
+               alt="함평나비대축제"
+               class="card-img-photo"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="img-bg" style="background:linear-gradient(135deg,#7C2D8B,#C45FD6);">🎭</div>
+          <div class="visitor-badge">🏅 18만+</div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">함평나비대축제</div>
+          <div class="card-info-row">
+            <span class="card-info-icon">📅</span>
+            <span>2026.04.24 ~ 2026.05.05</span>
+          </div>
+          <div class="card-info-row">
+            <span class="card-info-icon">📍</span>
+            <span>전라남도 함평군 함평읍 곤재로 27</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 카드 5 -->
+      <a href="#" class="festival-card slide-card">
+        <div class="card-img">
+            <img src="/view/image/index/sannamul.jpg"
+               alt="양평용문산 산나물축제"
+               class="card-img-photo"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="img-bg" style="background:linear-gradient(135deg,#7C2D8B,#C45FD6);">🎭</div>
+          <div class="visitor-badge">🏅 18만+</div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">양평용문산 산나물축제</div>
+          <div class="card-info-row">
+            <span class="card-info-icon">📅</span>
+            <span>2026.04.24 ~ 2026.04.26</span>
+          </div>
+          <div class="card-info-row">
+            <span class="card-info-icon">📍</span>
+            <span>경기도 양평군 용문산로 786 용문산관광지 일원</span>
+          </div>
+        </div>
+      </a>
+
+    </div><!-- /slider-track -->
+
+    <button class="slider-btn slider-prev" id="sliderPrev-apr">&#8592;</button>
+    <button class="slider-btn slider-next" id="sliderNext-apr">&#8594;</button>
+    <div class="slider-dots" id="sliderDots-apr"></div>
+  </div>
+
+</section>
+
+<!-- ══════ 그외 축제 ══════ 
+<section class="section fade-up" id="next-month">
+  <div class="section-head">
+    <div>
+      <div class="section-label">May 2026</div>
+      <div class="section-title"><span>5월</span> 축제 미리보기</div>
+    </div>
+    <a href="#" class="see-all">전체보기 →</a>
+  </div>
+
+  <div class="festival-list">
+
+    <a href="#" class="list-card">
+      <div class="list-thumb" style="background:linear-gradient(135deg,#FF6B35,#F7931E);">🌼</div>
+      <div class="list-info">
+        <div class="list-region">경남 · 함양</div>
+        <div class="list-name">함양 산삼 항노화 엑스포</div>
+        <div class="list-meta">
+          <div class="meta-chip">📅 05.03 (토)</div>
+          <div class="meta-chip">📍 서울 출발</div>
+          <div class="visitor-badge" style="position:static;font-size:10px;padding:2px 8px;">🏅 20만+</div>
+        </div>
+      </div>
+      <div class="list-right">
+        <div class="list-price">₩35,000</div>
+        <div class="coming-badge">오픈예정</div>
+      </div>
+    </a>
+
+    <a href="#" class="list-card">
+      <div class="list-thumb" style="background:linear-gradient(135deg,#E91E8C,#9C27B0);">🌹</div>
+      <div class="list-info">
+        <div class="list-region">경북 · 경주</div>
+        <div class="list-name">경주 장미 축제</div>
+        <div class="list-meta">
+          <div class="meta-chip">📅 05.17 (토)</div>
+          <div class="meta-chip">📍 서울 출발</div>
+        </div>
+      </div>
+      <div class="list-right">
+        <div class="list-price">₩45,000</div>
+        <div class="coming-badge">오픈예정</div>
+      </div>
+    </a>
+
+    <a href="#" class="list-card">
+      <div class="list-thumb" style="background:linear-gradient(135deg,#1565C0,#42A5F5);">🎏</div>
+      <div class="list-info">
+        <div class="list-region">강원 · 정선</div>
+        <div class="list-name">정선 아리랑 봄 축제</div>
+        <div class="list-meta">
+          <div class="meta-chip">📅 05.24 (토)</div>
+          <div class="meta-chip">📍 동서울 출발</div>
+          <div class="visitor-badge" style="position:static;font-size:10px;padding:2px 8px;">🏅 10만+</div>
+        </div>
+      </div>
+      <div class="list-right">
+        <div class="list-price">₩38,000</div>
+        <div class="coming-badge">오픈예정</div>
+      </div>
+    </a>
+
+    <a href="#" class="list-card">
+      <div class="list-thumb" style="background:linear-gradient(135deg,#2E7D32,#81C784);">🍃</div>
+      <div class="list-info">
+        <div class="list-region">전남 · 담양</div>
+        <div class="list-name">담양 대나무 축제</div>
+        <div class="list-meta">
+          <div class="meta-chip">📅 05.31 (토)</div>
+          <div class="meta-chip">📍 서울 출발</div>
+        </div>
+      </div>
+      <div class="list-right">
+        <div class="list-price">₩42,000</div>
+        <div class="coming-badge">오픈예정</div>
+      </div>
+    </a>
+
+  </div>
+</section>
+-->
+
+<!-- ══════ FOOTER ══════ -->
+<footer class="footer" style="margin-top:64px;">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon">🚌</div>
+          <div class="logo-text">
+            <span class="logo-main">로컬트립 연구소</span>
+            <span class="logo-sub">LocalTrip Lab · 축제버스</span>
+          </div>
+        </div>
+        <p class="footer-desc">다양한 경험, 다채로운 삶.<br>로컬트립은 당신의 소도시 여행을 가장 편하게 연결합니다.</p>
+      </div>
+      <div class="footer-links">
+        <!-- <div class="footer-col">
+          <h4>서비스</h4>
+          <a href="#this-month">이달의 축제</a>
+          <a href="#next-month">다음달 축제</a>
+          <a href="#">예약 조회</a>
+        </div>
+        <div class="footer-col">
+          <h4>고객지원</h4>
+          <a href="https://open.kakao.com/o/gLqMQGSh" target="_blank">카카오톡 문의</a>
+          <a href="#">환불/취소 정책</a>
+          <a href="#">자주 묻는 질문</a>
+        </div> -->
+        <div class="footer-col">
+          <!-- <h4>연락처</h4> -->
+          <a href="mailto:festivalbuskr@gmail.com">festivalbuskr@gmail.com</a>
+          <a href="https://instagram.com/unusuallab101" target="_blank">@unusuallab101</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 LocalTrip Lab. All rights reserved.</span>
+      <div class="footer-sns">
+        <a href="https://instagram.com/unusuallab101" class="sns-btn" target="_blank">📸</a>
+        <a href="https://open.kakao.com/o/gLqMQGSh" class="sns-btn" target="_blank">💬</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- 카카오톡 고정 버튼 -->
+<a href="https://open.kakao.com/o/gLqMQGSh" target="_blank" rel="noopener" class="kakao-fixed">
+  <span>💬</span> 문의하기
+</a>
+
+<script>
+  // 스크롤 페이드 애니메이션
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // 슬라이더 초기화 함수 — ID만 넘기면 독립적으로 동작
+  function initSlider(trackId, prevId, nextId, dotsId) {
+    const track    = document.getElementById(trackId);
+    const prevBtn  = document.getElementById(prevId);
+    const nextBtn  = document.getElementById(nextId);
+    const dotsWrap = document.getElementById(dotsId);
+
+    if (!track) return;
+
+    const cards = track.querySelectorAll('.slide-card');
+    const total = cards.length;
+    let current = 0;
+
+    // 도트 생성
+    cards.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `${i + 1}번 슬라이드`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+
+    function goTo(idx) {
+      current = Math.max(0, Math.min(idx, total - 1));
+      track.style.transform = `translateX(-${current * 100}%)`;
+
+      // 도트 업데이트
+      dotsWrap.querySelectorAll('.slider-dot').forEach((d, i) =>
+        d.classList.toggle('active', i === current)
+      );
+
+      // 버튼 disabled
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === total - 1;
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    // 터치 스와이프
+    let touchStartX = 0;
+    track.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+    });
+
+    // 초기화
+    goTo(0);
+  }
+
+  // 3월, 4월 슬라이더 각각 초기화
+  initSlider('sliderTrack-mar', 'sliderPrev-mar', 'sliderNext-mar', 'sliderDots-mar');
+  initSlider('sliderTrack-apr', 'sliderPrev-apr', 'sliderNext-apr', 'sliderDots-apr');
+</script>
+</body>
+</html>
